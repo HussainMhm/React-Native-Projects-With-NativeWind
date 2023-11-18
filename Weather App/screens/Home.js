@@ -1,8 +1,16 @@
 import { useState } from "react";
 import { StatusBar } from "expo-status-bar";
-import { View, Text, Image, SafeAreaView, TextInput, TouchableOpacity } from "react-native";
+import {
+    View,
+    Text,
+    Image,
+    SafeAreaView,
+    TextInput,
+    TouchableOpacity,
+    ScrollView,
+} from "react-native";
 
-import { MagnifyingGlassIcon } from "react-native-heroicons/outline";
+import { MagnifyingGlassIcon, CalendarDaysIcon } from "react-native-heroicons/outline";
 import { MapPinIcon } from "react-native-heroicons/solid";
 
 import { theme } from "../theme";
@@ -93,7 +101,7 @@ function Home(props) {
                         />
                     </View>
 
-                    {/* degree celcius */}
+                    {/* Degree celcius */}
                     <View className="space-y-2">
                         <Text className="text-center font-bold text-white text-6xl ml-5">
                             23&#176;
@@ -103,7 +111,43 @@ function Home(props) {
                         </Text>
                     </View>
 
-                    
+                    {/* Other stats */}
+                    <View className="flex-row justify-between mx-4">
+                        <View className="flex-row space-x-2 items-center">
+                            <Image
+                                source={require("../assets/icons/wind.png")}
+                                className="w-6 h-6"
+                            />
+                            <Text className="text-white font-semibold text-base">22km</Text>
+                        </View>
+                        <View className="flex-row space-x-2 items-center">
+                            <Image
+                                source={require("../assets/icons/drop.png")}
+                                className="w-6 h-6"
+                            />
+                            <Text className="text-white font-semibold text-base">23%</Text>
+                        </View>
+                        <View className="flex-row space-x-2 items-center">
+                            <Image
+                                source={require("../assets/icons/sun.png")}
+                                className="w-6 h-6"
+                            />
+                            <Text className="text-white font-semibold text-base">6:05 AM</Text>
+                        </View>
+                    </View>
+
+                    {/* Forecast for next days */}
+                    <View className="mb-2 space-y-3">
+                        <View className="flex-row items-center mx-5 space-x-2">
+                            <CalendarDaysIcon size="22" color="white" />
+                            <Text className="text-white text-base">Daily forecast</Text>
+                        </View>
+                        <ScrollView
+                            horizontal
+                            contentContainerStyle={{ paddingHorizontal: 15 }}
+                            showsHorizontalScrollIndicator={false}
+                        ></ScrollView>
+                    </View>
                 </View>
             </SafeAreaView>
         </View>

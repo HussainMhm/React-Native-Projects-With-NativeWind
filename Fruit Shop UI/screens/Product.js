@@ -4,6 +4,8 @@ import StarRating from "react-native-star-rating";
 
 import { themeColors } from "../theme";
 
+const safeArea = Platform.OS === "android" ? "pt-11" : "pt-3";
+
 function Product({ navigation, route }) {
     const fruit = route.params;
 
@@ -102,7 +104,7 @@ function Product({ navigation, route }) {
     }
 
     return (
-        <View className="flex-1" style={{ backgroundColor: fruit.color }}>
+        <View className={"flex-1 " + safeArea} style={{ backgroundColor: fruit.color }}>
             {renderHeader()}
             {renderContent()}
         </View>

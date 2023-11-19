@@ -4,6 +4,8 @@ import { ChevronLeftIcon, MinusIcon, PlusIcon } from "react-native-heroicons/sol
 import { cartItems } from "../constants";
 import { themeColors } from "../theme";
 
+const safeArea = Platform.OS === "android" ? "pt-11" : "pt-3";
+
 function Cart({ navigation }) {
     function renderHeaderBar() {
         return (
@@ -111,7 +113,7 @@ function Cart({ navigation }) {
     }
 
     return (
-        <SafeAreaView className="flex-1 justify-between bg-orange-50">
+        <SafeAreaView className={"flex-1 justify-between bg-orange-50 " + safeArea}>
             {renderHeaderBar()}
             {renderCartContent()}
             {renderPaymentButton()}

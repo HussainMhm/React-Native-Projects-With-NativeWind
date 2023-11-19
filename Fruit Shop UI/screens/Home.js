@@ -4,6 +4,9 @@ import { Bars3CenterLeftIcon, ShoppingCartIcon, HeartIcon } from "react-native-h
 import { themeColors } from "../theme";
 import { categories, featuredFruits } from "../constants";
 import { useState } from "react";
+import { StatusBar } from "expo-status-bar";
+
+const safeArea = Platform.OS === "android" ? "pt-11" : "pt-3";
 
 function Home({ navigation }) {
     function renderHeaderBar() {
@@ -12,7 +15,10 @@ function Home({ navigation }) {
                 <TouchableOpacity className="p-2 rounded-xl bg-orange-100">
                     <Bars3CenterLeftIcon size={30} color="black" />
                 </TouchableOpacity>
-                <TouchableOpacity className="p-2 rounded-xl bg-orange-100">
+                <TouchableOpacity
+                    className="p-2 rounded-xl bg-orange-100"
+                    onPress={() => navigation.navigate("Cart")}
+                >
                     <ShoppingCartIcon size={30} color="orange" />
                 </TouchableOpacity>
             </View>
@@ -111,7 +117,7 @@ function Home({ navigation }) {
                         shadowOpacity: 0.6,
                     }}
                 >
-                    <Image source={fruit.image} style={{ width: 210, height: 210 }} />
+                    <Image source={fruit.image} style={{ width: 175, height: 175 }} />
                 </View>
 
                 <View className="ml-4 my-4">
@@ -180,7 +186,8 @@ function Home({ navigation }) {
     }
 
     return (
-        <SafeAreaView className="flex-1 bg-orange-50">
+        <SafeAreaView className={"flex-1 bg-orange-50 " + safeArea}>
+            <StatusBar style="auto" />
             {renderHeaderBar()}
             {renderTitle()}
             {renderCategories()}
